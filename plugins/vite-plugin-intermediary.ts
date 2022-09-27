@@ -13,7 +13,7 @@ export default function myPlugin(options: Intermediary) {
   const { dir, include = ['ts', 'js'], output } = options
   const targetDir = path.join(process.cwd(), dir, '/')
   const outputFile = targetDir + output
-  let HMR_LIST:any = []
+  let HMR_LIST = []
   return {
     name: 'vite-plugin-intermediary',
     async handleHotUpdate(hmr: HmrContext) {
