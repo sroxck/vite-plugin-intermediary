@@ -10,7 +10,7 @@ import { exportDefaultRegExp, exportNamedRegExp, getFileName, getFilePathRegExp 
  * @returns 
  */
 export default function myPlugin(options: Intermediary) {
-  const { dir, include = ['ts', 'js'], output } = options
+  const { dir, include = ['ts', 'js'], output ,auto} = options
   const targetDir = path.join(process.cwd(), dir, '/')
   const outputFile = targetDir + output
   let HMR_LIST = []

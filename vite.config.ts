@@ -1,10 +1,10 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import myPlugin from './plugins/vite-plugin-intermediary'
-// https://vitejs.dev/config/
+import myPlugin from './plugins'
 export default defineConfig({
   plugins: [vue(),myPlugin({
     dir:'src/components',
-    output:'fs.ts'
+    output:'index.ts',
+    auto:true
   })]
 })

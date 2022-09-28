@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "play": "ts-node --esm ./playground/server.ts",
     "build": "vue-tsc --noEmit && vite build",
     "preview": "vite preview"
   },
