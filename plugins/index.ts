@@ -2,27 +2,32 @@ import { log } from 'console'
 import path from 'path'
 import fs, { constants } from 'fs'
 import { type HmrContext } from 'vite'
-import { Intermediary } from './types'
-import { exportDefaultRegExp, exportNamedRegExp, getFileName, getFilePathRegExp } from './utils'
+import { Intermediary } from './types.js'
+import { exportDefaultRegExp, exportNamedRegExp, getFileName, getFilePathRegExp } from './utils.js'
 
 /**
  * @param options 
  * @returns 
  */
 export default function myPlugin(options: Intermediary) {
+  
   const { dir, include = ['ts', 'js'], output ,auto} = options
   const targetDir = path.join(process.cwd(), dir, '/')
   const outputFile = targetDir + output
-  let HMR_LIST = []
+  let HMR_LIST:any = []
   return {
     name: 'vite-plugin-intermediary',
     async handleHotUpdate(hmr: HmrContext) {
+  console.log(22);
+
       const { file, read } = hmr
       const fileName = getFileName(file)
       const filePathReg = getFilePathRegExp(targetDir)
       // if triggered hot update is output file break function 
       if (file == outputFile) return
       // if hot update files from options dir 
+      console.log(filePathReg.test(file),file,filePathReg);
+      
       if (filePathReg.test(file)) {
         const fileData = await read()
         // if the file content  contains export default 

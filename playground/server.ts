@@ -1,16 +1,24 @@
 import { fileURLToPath } from 'url'
 import { createServer } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import myPlugin from '../plugins'
+import intermediary from '../plugins/index.js'
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 (async () => {
   const server = await createServer({
     configFile: false,
     mode:'development',
-    plugins: [vue()],
+    plugins: [vue(),intermediary({
+      dir:'/playground/test',
+      output:'plugin-output.ts'
+    })],
     root: __dirname,
     server: {
+      watch: {
+        persistent:true,
+        useFsEvents:true,
+        alwaysStat:true,
+      },
       port: 1337
     }
   })
