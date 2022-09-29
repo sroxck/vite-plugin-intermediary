@@ -1,5 +1,6 @@
 # vite-plugin-intermediary
 自动创建导入导出中转文件，通常用于多文件导出统一单文件导入路径
+![img](public/demo.gif)
 
 
 ## Feature
