@@ -1,5 +1,6 @@
 # vite-plugin-intermediary
-自动创建导入导出中转文件，通常用于多文件导出统一单文件导入路径
+自动创建导入导出中转文件，通常用于多文件导出统一单文件导入路径   
+
 ![img](public/demo.gif)
 
 
@@ -52,5 +53,3 @@ export type includeOptins = 'ts' | 'js' | 'vue' | 'md'
 ## Internal
 默认情况下,会监听指定`dir`目录下的文件HMR进行匹配,文件内容包含`export` 或`export default`,会在当前目录创建`output`文件,根据匹配到的导出模式,自动添加`export * as 'fileName' from 'filePath'` 或者 `export {default as 'fileName'} from 'filePath'` 并添加进缓存,仅对`export`字段的修改触发监听,采用追加写,匹配替换,不影响主动修改内容
 
-## License
-MiT
