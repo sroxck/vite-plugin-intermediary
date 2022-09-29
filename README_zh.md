@@ -1,5 +1,5 @@
 # vite-plugin-intermediary
-Automatically create an import and export transit file, Usually used to unify import paths 
+自动创建导入导出中转文件，通常用于统一导入路径
 
 ## Requirement
 
