@@ -2,8 +2,8 @@ import { log } from 'console'
 import path from 'path'
 import fs, { constants } from 'fs'
 import { type HmrContext } from 'vite'
-import { Intermediary } from './types.js'
-import { exportDefaultRegExp, exportNamedRegExp, getFileName, getFilePathRegExp } from './utils.js'
+import { Intermediary } from './types'
+import { exportDefaultRegExp, exportNamedRegExp, getFileName, getFilePathRegExp } from './utils'
 
 /**
  * @param options 

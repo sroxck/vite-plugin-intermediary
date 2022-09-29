@@ -1,7 +1,7 @@
 import { fileURLToPath } from 'url'
 import { createServer } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import intermediary from '../plugins/index.js'
+import intermediary from '../plugins/index'
 const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
 (async () => {
