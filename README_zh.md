@@ -10,7 +10,7 @@
 
 ## Requirement
 
-- node version: >=16
+- node version: >=14
 
 
 ## Install

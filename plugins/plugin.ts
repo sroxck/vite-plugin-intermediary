@@ -37,9 +37,22 @@ export default function plugin(options: Intermediary) {
         }
 
         if(HMR_LIST.has(fileName)){
-          console.log('独一无二1',fileData)
-          console.log('独一无二2',exportDefaultRegExp.test(fileData))
-          console.log('独一无二3',exportNamedRegExp.test(fileData))
+          if(!(exportDefaultRegExp.test(fileData) && exportNamedRegExp.test(fileData))){
+            console.log('HMR_LIST.get(fileName)',HMR_LIST.get(fileName))
+            if(HMR_LIST.get(fileName) =='default'){
+              fs.readFile(outputFile, 'utf8', function(err,data){
+                const fileBuffer = data.toString().replace(`export {default as ${fileName} } from './${fileName}'`,'')
+                fs.writeFile(outputFile, fileBuffer, 'utf8',(err)=>{})
+                HMR_LIST.delete(fileName)
+              })
+            }
+            if(HMR_LIST.get(fileName) =='named'){
+
+            }
+          }
+          console.log('test1',fileData)
+          console.log('test2',exportDefaultRegExp.test(fileData))
+          console.log('test3',exportNamedRegExp.test(fileData))
 
         }
       }
