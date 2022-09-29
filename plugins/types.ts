@@ -4,4 +4,4 @@ export interface Intermediary {
   output: string,
   auto?:boolean
 }
-export type includeOptins = 'ts' | 'js' | 'vue'
+export type includeOptins = 'ts' | 'js' | 'vue' | 'md'
