@@ -11,7 +11,8 @@ Automatically create an import and export transit file, Usually used to unify im
 
 ## Feature
 
-- 
+- Additional write, does not affect the actively exported content
+- Modify the export content to trigger the transfer file update
 
 ## Install
 
