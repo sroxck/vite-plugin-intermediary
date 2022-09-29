@@ -3,7 +3,7 @@ import fs, { constants } from 'fs'
 import { type HmrContext } from 'vite'
 import { Intermediary } from './types'
 import { exportDefaultRegExp, exportNamedRegExp, getFileName, getFilePathRegExp } from './utils'
-import { cacheMap } from './cache'
+import { cacheMap, isCache } from './cache'
 export default function plugin(options: Intermediary) {
   const { dir, include = ['ts', 'js'], output, auto } = options
   const targetDir = path.join(process.cwd(), dir, '/')
@@ -23,7 +23,7 @@ export default function plugin(options: Intermediary) {
         if (exportDefaultRegExp.test(fileData)) {
           if (cacheMap.has(fileName)) return
           fs.appendFile(outputFile, `export {default as ${fileName} } from './${fileName}'\n`, (err) => {
-            console.log(' err1', err)
+            // console.log(' err1', err)
           })
           cacheMap.set(fileName, 'default')
           return
@@ -32,15 +32,14 @@ export default function plugin(options: Intermediary) {
         if (exportNamedRegExp.test(fileData)) {
           if (cacheMap.has(fileName)) return
           fs.appendFile(outputFile, `export * as ${fileName} from './${fileName}'\n`, (err) => {
-            console.log(' err', err)
+            // console.log(' err', err)
           })
           cacheMap.set(fileName, 'named')
           return
         }
-
-        if (cacheMap.has(fileName)) {
+        if (isCache(fileName)) {
           if (!(exportDefaultRegExp.test(fileData) && exportNamedRegExp.test(fileData))) {
-            console.log('cacheMap.get(fileName)', cacheMap.get(fileName))
+            // console.log('cacheMap.get(fileName)', cacheMap.get(fileName))
             if (cacheMap.get(fileName) == 'default') {
               fs.readFile(outputFile, 'utf8', function (err, data) {
                 const fileBuffer = data.toString().replace(`export {default as ${fileName} } from './${fileName}'`, '')
