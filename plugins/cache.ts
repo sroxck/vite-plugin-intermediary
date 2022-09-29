@@ -11,4 +11,5 @@ function fileCache(){
 function isCache(){
 
 }
-
+const cacheMap = new Map<string, string>();
+export { cacheMap }
