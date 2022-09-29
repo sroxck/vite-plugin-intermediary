@@ -39,10 +39,10 @@ export default defineConfig({
 
 ``` ts
 export interface Intermediary {
-  dir: string, // 需要监听的目录
-  include?: includeOptins[] // 包含的文件类型数组
-  output: string, // 输出的中转文件
-  auto?:boolean, // 是否自动扫描并生成,默认false
+  dir: string, // watcher directive
+  include?: includeOptins[] // file type list
+  output: string, 
+  auto?:boolean, //if true scan dir and create intermediary file to first run vite
 }
 export type includeOptins = 'ts' | 'js' | 'vue' | 'md'
 
