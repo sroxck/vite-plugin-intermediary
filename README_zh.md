@@ -5,9 +5,9 @@
 
 ## Feature
 
-- 
-- 
-- 
+- 识别`default` 或 `named`
+- 追加写,不影响主动导出的内容
+- 缓存监听,修改export内容触发中转文件更新
 
 ## Requirement
 
@@ -17,7 +17,7 @@
 ## Install
 
 ``` zsh
-npm i -g 
+pnpm i vite-plugin-intermediary -D
 ```
 
 
@@ -50,7 +50,7 @@ export type includeOptins = 'ts' | 'js' | 'vue' | 'md'
 ```
 
 ## Internal
-默认情况下,会监听指定`dir`目录下的文件HMR进行匹配,文件内容包含`export` 或`export default`,会在当前目录创建`output`文件,根据匹配到的导出模式,自动添加`export * as 'fileName' from 'filePath'` 或者 `export {default as 'fileName'} from 'filePath'`
+默认情况下,会监听指定`dir`目录下的文件HMR进行匹配,文件内容包含`export` 或`export default`,会在当前目录创建`output`文件,根据匹配到的导出模式,自动添加`export * as 'fileName' from 'filePath'` 或者 `export {default as 'fileName'} from 'filePath'` 并添加进缓存,仅对`export`字段的修改触发监听,采用追加写,匹配替换,不影响主动修改内容
 
 ## License
 MiT
