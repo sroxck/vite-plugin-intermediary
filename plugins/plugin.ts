@@ -26,6 +26,7 @@ export default function plugin(options: Intermediary) {
             console.log(' err1', err)
           })
           HMR_LIST.set(fileName,'default')
+          return 
         }
         // if the file content  contains export 
         if (exportNamedRegExp.test(fileData)) {
@@ -34,6 +35,7 @@ export default function plugin(options: Intermediary) {
             console.log(' err', err)
           })
           HMR_LIST.set(fileName,'named')
+          return
         }
 
         if(HMR_LIST.has(fileName)){
@@ -47,7 +49,11 @@ export default function plugin(options: Intermediary) {
               })
             }
             if(HMR_LIST.get(fileName) =='named'){
-
+              fs.readFile(outputFile, 'utf8', function(err,data){
+                const fileBuffer = data.toString().replace(`export * as ${fileName} from './${fileName}'`,'')
+                fs.writeFile(outputFile, fileBuffer, 'utf8',(err)=>{})
+                HMR_LIST.delete(fileName)
+              })
             }
           }
           console.log('test1',fileData)
