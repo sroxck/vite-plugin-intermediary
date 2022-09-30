@@ -22,6 +22,6 @@ const __dirname = fileURLToPath(new URL('.', import.meta.url));
       port: 1337
     }
   })
-  await server.listen()
+  await server.listen() 
   server.printUrls()
 })()
