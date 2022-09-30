@@ -26,7 +26,7 @@ export default function plugin(options: Intermediary) {
             // console.log(' err1', err)
           })
           cacheMap.set(fileName, 'default')
-          return
+          return 
         }
         // if the file content  contains export 
         if (exportNamedRegExp.test(fileData)) {
