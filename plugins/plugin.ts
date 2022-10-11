@@ -4,12 +4,20 @@ import { type HmrContext } from 'vite'
 import { Intermediary } from './types'
 import { exportDefaultRegExp, exportNamedRegExp, getFileName, getFilePathRegExp } from './utils'
 import { cacheMap, isCache } from './cache'
+import { scan } from './scan'
 export default function plugin(options: Intermediary) {
   const { dir, include = ['ts', 'js'], output, auto } = options
   const targetDir = path.join(process.cwd(), dir, '/')
   const outputFile = targetDir + output
   return {
     name: 'vite-plugin-intermediary',
+    buildStart(){
+      const { auto } = options      
+      if(!auto) return 
+      // scan for dir 
+      console.log(33333,options)
+      scan(targetDir,outputFile)
+    },
     async handleHotUpdate(hmr: HmrContext) {
       const { file, read } = hmr
       const fileName = getFileName(file)

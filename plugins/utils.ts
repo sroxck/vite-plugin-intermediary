@@ -8,6 +8,7 @@ const exportDefaultRegExp = /export *default/g
 
 const exportNamedRegExp = /export */g
 
+
 export {
   getFileName,
   getFilePathRegExp,
