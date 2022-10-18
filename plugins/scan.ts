@@ -5,8 +5,10 @@ export const scanUtils = {
   getDir() {
 
   },
-  readDir() {
-
+  readDir(dir:string) {
+    return new Promise((resolve,reject)=>{
+      
+    })
   },
   writeDir() {
 
@@ -37,3 +39,4 @@ export const scanUtils = {
     })
   }
 }
+

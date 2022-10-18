@@ -1,5 +1,3 @@
-export * as test2 from './test2'
-export * as test2 from './test2'
-export * as test2 from './test2'
-export * as test2 from './test2'
-export * as test2 from './test2'
+
+
+
