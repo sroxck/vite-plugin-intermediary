@@ -13,7 +13,6 @@ export default function plugin(options: Intermediary) {
   return {
     name: 'vite-plugin-intermediary',
     buildStart() {
-      const { auto } = options
       if (!auto) return
       // scan for dir 
       console.log(options, options)
